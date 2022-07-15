@@ -14,17 +14,41 @@ Here's a summary of what the script would look like:
 graph TD
 A[Post the Bulk Read job]
 B[Get the job ID]
-C[Retrive the csv file of the job via the job ID]
+C[Retrieve the csv file of the job via the job ID]
 D[Extract the csv file and get the file content]
 E[Initiate the headers for a new csv file <br> <li>This will be used for mass update later<li>Record ID and fields that need updating]
 F[Process every record and build the update csv file]
 G[Generate & compress the csv file]
-H[Send the csv file for record keeping and review - optional]
+H["Send the csv file for<BR>record keeping and review<BR>(optional)"]
 I[Upload the compresssed file]
 J[Get the file ID from the upload]
 K[Run the Bulk Write job with the file ID]
 
-A --> B --> C --> D --> E--> F --> G --> H --> I --> J --> K
+subgraph <B> <B>
+
+X((<B>EXTRACT</B>))
+A
+B
+C
+D
+
+end
+
+subgraph <B>  <B>
+Y((<B>TRANSFORM</B>))
+E
+F
+G
+end
+
+subgraph <B>   <B>
+Z((<B>LOAD</b>))
+I
+J
+K
+end
+
+X -.-> A --> B --> C --> D -.-> Y -.-> E--> F --> G -.-> H -.-> Z -.-> I --> J --> K
 ```
 
 ## Configuration
@@ -376,5 +400,16 @@ if(jobId != null)
 A successful bulk write job will return a response that looks like this:
 
 ```
-{"status":"success","code":"SUCCESS","message":"success","details":{"id":"4371574000016498003","created_by":{"id":"4371574000000251013","name":"Mike Copters"}}}
-``
+{
+  "status": "success",
+  "code": "SUCCESS",
+  "message": "success",
+  "details": {
+    "id": "4371574000016498003",
+    "created_by": {
+      "id": "4371574000000251013",
+      "name": "Mike Copters"
+    }
+  }
+}
+```
