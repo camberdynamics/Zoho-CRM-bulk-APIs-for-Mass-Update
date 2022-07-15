@@ -68,7 +68,7 @@ return orgId;
 
 ## Example Use Case
 For the purpose of this demonstration, we've created an example use case: 
-For all Deals created in 2022 that are Closed Won, has an Amount that is from $100,000 and above, whose related Account's Country is US, we want to:
+For all Deals created in 2022 that are Closed Won with an Amount that is from $100,000 and above whose related Account's Country is US, we want to:
 - Check a custom checkbox field called "High Roller".
 - Update a custom single line field called "High Roller Info" with a concatenation of "Deal Name (Account Name) : Amount"
 
