@@ -183,7 +183,7 @@ if(bulkRead.containKey("data"))
 > **Note:** The rest of the script from hereon is wrapped in an `if(jobId != null)` condition.
 - Create a 10-second delay with the standalone function that you have configured (we have found 10 seconds to be the average time it takes for am average sized bulk read job to be indexed).
   - If you try to retrieve a job before it's indexed, it will fail.
-- Run the API call to retrieve the bulk job.
+- Run the bulk API call to retrieve the bulk job.
 - A job may take longer than 10 seconds to index for larger datasets. To account for that, create a pseudo-while loop to repeat the retrieval API call with a 10-second delay at iteration until successful.
   - Zoho does not have a native function for a while loop, so we make our own with an iterator and if condition. Read more about creating your own while loop [here](https://github.com/camberdynamics/Create-List-Of-Sequential-Numbers).
   - We have set 10 iterations of 10-second delays. Plus the initial 10-second delay, this section could go up to a maximum of 110 seconds to retrieve a job. You can increase the number here, but keep in mind that Zoho Deluge has a runtime limit of 5 minutes per execution.
