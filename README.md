@@ -242,6 +242,7 @@ if(jobId != null)
 - We get the field value with the indexMap that we have built at the top of the script - `c.get(indexMap.get("field_name")`
 - The entire section in the loop here is based on the example use case. Please configure accordingly.
 - In this example, we setting "true" to the "High_Roller" field and a concatenation of "Deal Name (Account Name) : Amount".
+> **Tip:** The toString() function is more than just converting a variable to a string. It has many uses and one of it is to format an integer into a comma separated currency as seen in the `amount.toString("$#,##0")` part of the script. [Click here to read more about character formatting using toString().](https://github.com/camberdynamics/toString-Character-Formatting)
 
 ```javascript
 	// 8. ITERATE OVER EACH ROW AND BUILD THE CSV
@@ -334,11 +335,11 @@ if(jobId != null)
 
 
 
-### 13. GET FILE ID FROM THE UPLOAD & PERFORM THE BULK WRITE
+### 13. GET FILE ID FROM THE UPLOAD & RUN THE BULK WRITE
 - Finally, get the file ID from the upload API call and run the bulk write API to mass update all the records
 
 ```javascript	
-	// 13. GET FILE ID FROM THE UPLOAD & PERFORM THE BULK WRITE
+	// 13. GET FILE ID FROM THE UPLOAD & RUN THE BULK WRITE
 	if(upload.get("code") == "FILE_UPLOAD_SUCCESS")
 	{
 		fileId = upload.get("details").get("file_id");
@@ -372,3 +373,8 @@ if(jobId != null)
 	}
 }
 ```
+A successful bulk write job will return a response that looks like this:
+
+```
+{"status":"success","code":"SUCCESS","message":"success","details":{"id":"4371574000016498003","created_by":{"id":"4371574000000251013","name":"Mike Copters"}}}
+``
