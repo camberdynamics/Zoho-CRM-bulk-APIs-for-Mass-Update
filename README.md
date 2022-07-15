@@ -360,7 +360,7 @@ if(jobId != null)
 
 
 ### 13. GET FILE ID FROM THE UPLOAD & RUN THE BULK WRITE
-- Finally, get the file ID from the upload API call and run the bulk write API to mass update all the records
+- Finally, get the file ID from the upload API call and run the bulk write API to mass update the records
 
 ```javascript	
 	// 13. GET FILE ID FROM THE UPLOAD & RUN THE BULK WRITE
